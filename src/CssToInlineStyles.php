@@ -11,8 +11,6 @@ use TijsVerkoyen\CssToInlineStyles\Css\Rule\Processor as RuleProcessor;
 
 class CssToInlineStyles
 {
-    private $lastLibxmlErrors = [];
-
     private $cssConverter;
 
     public function __construct()
@@ -107,16 +105,6 @@ class CssToInlineStyles
     }
 
     /**
-     * Return the libxml errors of the createDomDocumentFromHtml method
-     *
-     * @return array
-     */
-    public function getLastLibxmlErrors()
-    {
-        return $this->lastLibxmlErrors;
-    }
-
-    /**
      * @param string $html
      *
      * @return \DOMDocument
@@ -126,7 +114,6 @@ class CssToInlineStyles
         $document = new \DOMDocument('1.0', 'UTF-8');
         $internalErrors = libxml_use_internal_errors(true);
         $document->loadHTML(mb_convert_encoding($html, 'HTML-ENTITIES', 'UTF-8'));
-        $this->lastLibxmlErrors = libxml_get_errors();
         libxml_use_internal_errors($internalErrors);
         $document->formatOutput = true;
 
