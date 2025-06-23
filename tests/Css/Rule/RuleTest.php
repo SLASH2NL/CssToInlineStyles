@@ -7,9 +7,9 @@ use TijsVerkoyen\CssToInlineStyles\Css\Rule\Rule;
 use Symfony\Component\CssSelector\Node\Specificity;
 use PHPUnit\Framework\TestCase;
 
-class PropertyTest extends TestCase
+class RuleTest extends TestCase
 {
-    public function testGetters()
+    public function testGetters(): void
     {
         $property = new Property('padding', '5px');
         $specificity = new Specificity(0, 0, 0);
